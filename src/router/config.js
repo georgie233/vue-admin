@@ -11,7 +11,7 @@ let rootModules = [
         component: BlankView,
         children: [
             {
-                path: 'demo1',
+                path: '/',
                 name: '演示页面',
                 component: () => import('@/pages/demo'),
             }
