@@ -3,7 +3,7 @@ import BlankView from "../layouts/BlankView";
 
 let rootModules = [
     {
-        path: 'demo',
+        path: '/',
         name: '演示路由',
         meta: {
             icon: 'menu',
@@ -11,7 +11,7 @@ let rootModules = [
         component: BlankView,
         children: [
             {
-                path: '/',
+                path: 'demo',
                 name: '演示页面',
                 component: () => import('@/pages/demo'),
             }
