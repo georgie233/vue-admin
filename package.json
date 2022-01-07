@@ -1,17 +1,13 @@
 {
   "name": "vue-antd-admin",
   "version": "0.7.4",
-  "homepage": "https://iczer.github.io/vue-antd-admin",
+  "homepage": "https://gitee.com/georgie233/vue-admin",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist -b pages -r https://gitee.com/iczer/vue-antd-admin.git",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "vuepress build docs && gh-pages -d docs/.vuepress/dist -b master -r https://gitee.com/iczer/vue-antd-admin-docs.git"
+    "predeploy": "yarn build"
   },
   "dependencies": {
     "@antv/data-set": "^0.11.4",
