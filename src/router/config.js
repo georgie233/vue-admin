@@ -8,8 +8,8 @@ let rootModules = [
         meta: {
             icon: 'menu',
         },
-        component: TabsView,
-        redirect: '/login',
+        component: BlankView,
+        redirect: '/demo',
         children: [
             {
                 path: 'demo',
