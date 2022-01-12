@@ -1,4 +1,4 @@
-<h1 align="center">Vue Admin Antd</h1>
+<h1 align="center">vue admin</h1>
 
 基于 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 实现的 [iczer/vue-antd-admin](https://gitee.com/iczer/vue-antd-admin) 版本进行三次修改
 
