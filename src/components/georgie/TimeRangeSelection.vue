@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="TimeRangeSelection">
         <a-date-picker
             v-model="startValue"
             :disabled-date="disabledStartDate"
@@ -89,6 +89,11 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+.TimeRangeSelection{
+    .ant-calendar-picker{
+        min-width: 50px !important;
+        width: 50% !important;
+    }
+}
 </style>
