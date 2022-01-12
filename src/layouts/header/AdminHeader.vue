@@ -11,15 +11,20 @@
         <i-menu class="head-menu" :theme="headerTheme" mode="horizontal" :options="menuData" @select="onSelect"/>
       </div>
       <div :class="['admin-header-right', headerTheme]">
-          <header-search class="header-item" @active="val => searchActive = val" />
-          <a-tooltip class="header-item" title="帮助文档" placement="bottom" >
-            <a href="https://iczer.gitee.io/vue-antd-admin-docs/" target="_blank">
+          <!--   搜索       -->
+          <header-search v-if="false" class="header-item" @active="val => searchActive = val" />
+          <!--   图标链接    -->
+          <a-tooltip class="header-item" title="Gitee" placement="bottom" >
+            <a href="https://gitee.com/georgie233/vue-admin/" target="_blank">
               <a-icon type="question-circle-o" />
             </a>
           </a-tooltip>
-          <header-notice class="header-item"/>
+          <!--    通知      -->
+          <header-notice v-if="false" class="header-item"/>
+          <!--     用户     -->
           <header-avatar class="header-item"/>
-          <a-dropdown class="lang header-item">
+          <!--      语言切换        -->
+          <a-dropdown class="lang header-item" v-if="false">
             <div>
               <a-icon type="global"/> {{langAlias}}
             </div>
