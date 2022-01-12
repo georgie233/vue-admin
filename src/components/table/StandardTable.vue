@@ -41,33 +41,35 @@
             </template>
         </a-table>
         <div v-if="isMobile">
-            <a-list :grid="{ gutter: 16, column: carNum }" :data-source="dataSource">
-                <a-list-item slot="renderItem" slot-scope="item,index">
-                    <a-card>
-                        <div slot="title" style="margin-bottom: 6px;">
-                            <a-checkbox @change="cardSelect(item,index)">选择</a-checkbox>
-                        </div>
-                        <div v-for="(c_item,c_index) in columns" :key="c_index">
-                            <div v-if="c_item['dataIndex']">
-                                <a-row>
-                                    <a-col span="4">{{ c_item.title }}</a-col>
-                                    <a-col span="20">{{ item[c_item.dataIndex] }}</a-col>
-                                </a-row>
+            <a-spin :spinning="loading">
+                <a-list :grid="{ gutter: 16, column: carNum }" :data-source="dataSource">
+                    <a-list-item slot="renderItem" slot-scope="item,index">
+                        <a-card>
+                            <div slot="title" style="margin-bottom: 6px;">
+                                <a-checkbox @change="cardSelect(item,index)">选择</a-checkbox>
                             </div>
-                            <div v-if="c_item['scopedSlots']">
-                                <div v-show="c_item['hideLabel'] === true" style="margin-top: 10px"></div>
-                                <a-row>
-                                    <a-col span="4" v-show="c_item['hideLabel'] !== true">{{ c_item.title }}</a-col>
-                                    <a-col span="20">
-                                        <slot :name="c_item['scopedSlots']['customRender']" v-bind:record="item"></slot>
-                                    </a-col>
-                                </a-row>
+                            <div v-for="(c_item,c_index) in columns" :key="c_index">
+                                <div v-if="c_item['dataIndex']">
+                                    <a-row>
+                                        <a-col span="4">{{ c_item.title }}</a-col>
+                                        <a-col span="20">{{ item[c_item.dataIndex] }}</a-col>
+                                    </a-row>
+                                </div>
+                                <div v-if="c_item['scopedSlots']">
+                                    <div v-show="c_item['hideLabel'] === true" style="margin-top: 10px"></div>
+                                    <a-row>
+                                        <a-col span="4" v-show="c_item['hideLabel'] !== true">{{ c_item.title }}</a-col>
+                                        <a-col span="20">
+                                            <slot :name="c_item['scopedSlots']['customRender']" v-bind:record="item"></slot>
+                                        </a-col>
+                                    </a-row>
 
+                                </div>
                             </div>
-                        </div>
-                    </a-card>
-                </a-list-item>
-            </a-list>
+                        </a-card>
+                    </a-list-item>
+                </a-list>
+            </a-spin>
 
         </div>
     </div>
