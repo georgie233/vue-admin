@@ -5,4 +5,5 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API
 module.exports = {
     LOGIN: `${BASE_URL}/admin/login`,
     ROUTES: `${BASE_URL}/admin/routes`,
+    UPLOAD_FILE: `${BASE_URL}/admin/uploadFile`,
 }
