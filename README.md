@@ -1,6 +1,6 @@
 <h1 align="center">vue admin</h1>
 
-基于 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 实现的 [iczer/vue-antd-admin](https://gitee.com/iczer/vue-antd-admin) 版本进行三次修改
+基于 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 的 [iczer/vue-antd-admin](https://gitee.com/iczer/vue-antd-admin) 实现版本进行三次修改
 
 (虽然我只是把大佬的代码搞得乱七八糟加上了我 [laravel自动化构建](https://gitee.com/georgie233/laravel-autocreate-api) 所需的功能，配置以及封装几个组件)
 
