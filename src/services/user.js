@@ -1,4 +1,4 @@
-import {LOGIN, ROUTES} from '@/services/api'
+import {LOGIN, ROUTES, INFO} from '@/services/api'
 import {request, METHOD, removeAuthorization} from '@/utils/request'
 
 /**
@@ -12,6 +12,10 @@ export async function login(name, password) {
     name: name,
     password: password
   })
+}
+
+export async function info(){
+    return request(INFO,METHOD.POST);
 }
 
 export async function getRoutesConfig() {
