@@ -31,6 +31,10 @@
                       v-for="slot in Object.keys($scopedSlots).filter(key => key !== 'expandedRowRender') ">
                 <slot :name="slot" v-bind="{text, record, index}"></slot>
             </template>
+            <template slot-scope="text, record, index" :slot="item.scopedSlots.customRender"
+                      v-for="item in replaceColumns">
+                {{ item['replace'][record[item.scopedSlots.customRender]] }}
+            </template>
             <template :slot="slot" v-for="slot in Object.keys($slots)">
                 <slot :name="slot"></slot>
             </template>
@@ -49,21 +53,35 @@
                                 <a-checkbox @change="cardSelect(item,index)">选择</a-checkbox>
                             </div>
                             <div v-for="(c_item,c_index) in columns" :key="c_index">
-                                <div v-if="c_item['dataIndex']">
+                                <div v-if="c_item['dataIndex'] && (c_item['dataIndex'].indexOf('.')===-1)">
                                     <a-row>
-                                        <a-col span="4">{{ c_item.title }}</a-col>
-                                        <a-col span="20">{{ item[c_item.dataIndex] }}</a-col>
+                                        <a-col span="7">{{ c_item.title }}</a-col>
+                                        <a-col span="17">
+                                            <span v-if="c_item.dataIndex">{{ item[c_item.dataIndex] }}</span>
+                                        </a-col>
                                     </a-row>
                                 </div>
-                                <div v-if="c_item['scopedSlots']">
+                                <div v-else-if="c_item['dataIndex'] && (c_item['dataIndex'].indexOf('.')>-1)">
+                                    <a-row>
+                                        <a-col span="7">{{ c_item.title }}</a-col>
+                                        <a-col span="17">
+                                            {{ item[c_item['dataIndex'].split('.')[0]][c_item['dataIndex'].split('.')[1]] }}
+                                        </a-col>
+                                    </a-row>
+                                </div>
+                                <div v-else-if="c_item['scopedSlots']">
                                     <div v-show="c_item['hideLabel'] === true" style="margin-top: 10px"></div>
                                     <a-row>
                                         <a-col span="4" v-show="c_item['hideLabel'] !== true">{{ c_item.title }}</a-col>
                                         <a-col span="20">
-                                            <slot :name="c_item['scopedSlots']['customRender']" v-bind:record="item"></slot>
+                                            <slot :name="c_item['scopedSlots']['customRender']"
+                                                  v-if="!c_item.replace"
+                                                  v-bind:record="item"></slot>
+                                            <div v-else style="padding-left: 15px">
+                                                {{ c_item.replace[item[c_item.scopedSlots.customRender]] }}
+                                            </div>
                                         </a-col>
                                     </a-row>
-
                                 </div>
                             </div>
                         </a-card>
@@ -102,6 +120,7 @@ export default {
             needTotalList: [],
             isCard: false,
             width: 1920,
+            replaceColumns: [],
         }
     },
     methods: {
@@ -138,7 +157,17 @@ export default {
         }
     },
     created() {
-        this.needTotalList = this.initTotalList(this.columns)
+        //columns
+        let columns_ = this.columns;
+        for (let i = 0; i < columns_.length; i++) {
+            if (columns_[i] && columns_[i].replace) {
+                this.replaceColumns.push(columns_[i]);
+                columns_[i].scopedSlots = {customRender: columns_[i].dataIndex};
+                delete columns_[i].dataIndex;
+            }
+        }
+        console.log(columns_);
+        this.needTotalList = this.initTotalList(columns_)
         this.width = window.innerWidth;
         window.onresize = () => {
             this.width = window.innerWidth;
