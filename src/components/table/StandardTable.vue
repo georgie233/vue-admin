@@ -53,7 +53,7 @@
                                 <a-checkbox @change="cardSelect(item,index)">选择</a-checkbox>
                             </div>
                             <div v-for="(c_item,c_index) in columns" :key="c_index">
-                                <div v-if="c_item['dataIndex'] && (c_item['dataIndex'].indexOf('.')===-1)">
+                                <div v-if="c_item['dataIndex'] && (c_item['dataIndex'].indexOf('.')===-1) && !c_item['replace']">
                                     <a-row>
                                         <a-col span="7">{{ c_item.title }}</a-col>
                                         <a-col span="17">
