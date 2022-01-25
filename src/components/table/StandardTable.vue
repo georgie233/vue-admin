@@ -163,7 +163,7 @@ export default {
             if (columns_[i] && columns_[i].replace) {
                 this.replaceColumns.push(columns_[i]);
                 columns_[i].scopedSlots = {customRender: columns_[i].dataIndex};
-                delete columns_[i].dataIndex;
+                // delete columns_[i].dataIndex;
             }
         }
         console.log(columns_);
