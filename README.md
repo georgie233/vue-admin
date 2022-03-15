@@ -4,7 +4,7 @@
 
 ( [laravel自动化构建](https://gitee.com/georgie233/laravel-autocreate-api) 的前端生成是基于这个脚手架)
 
- [Ant Design Pro]原作者请前往：([iczer/vue-antd-admin](https://gitee.com/iczer/vue-antd-admin))
+ 使用原[Ant Design Pro]请前往：([iczer/vue-antd-admin](https://gitee.com/iczer/vue-antd-admin))
 
 
 主要用于开源包：[laravel自动化构建](https://gitee.com/georgie233/laravel-autocreate-api) 的前端使
