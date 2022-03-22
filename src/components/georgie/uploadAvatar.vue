@@ -40,7 +40,9 @@ export default {
     name: "uploadAvatar",
     computed:{
         defUrl: function(){
-            return this.base_url.replace('/api','/upload/') + this.default_url;
+            if(this.default_url)
+                return this.base_url.replace('/api','/upload/') + this.default_url;
+            else return '';
         }
     },
     data() {
