@@ -67,6 +67,7 @@ export default {
                     if (info.file.response.code === 200){
                         this.onlineUrl = info.file.response.data.url;
                         this.$emit('put.value',this.onlineUrl);
+                        this.$emit('change',this.onlineUrl);
                         this.imageUrl = imageUrl;
                     }else {
                         this.$message.error(info.file.response.message);
