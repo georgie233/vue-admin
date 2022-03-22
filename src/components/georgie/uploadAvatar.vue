@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div style="display: flex;align-items: center;">
+        <img style="max-width: 200px;padding: 7px;" v-if="defUrl" :src="defUrl" alt="无法显示">
         <a-upload
             :name="name"
             list-type="picture-card"
@@ -35,8 +36,13 @@ export default {
         prop: 'value',
         event: 'put.value'
     },
-    props: ['keyStr', 'name', 'default'],
+    props: ['keyStr', 'name', 'default_url','base_url'],
     name: "uploadAvatar",
+    computed:{
+        defUrl: function(){
+            return this.base_url.replace('/api','/upload/') + this.default_url;
+        }
+    },
     data() {
         return {
             upload_path: UPLOAD_FILE,
@@ -46,9 +52,6 @@ export default {
         }
     },
     watch: {
-        default() {
-            console.log(this.default);
-        }
     },
     methods: {
         avatarChange(info) {
