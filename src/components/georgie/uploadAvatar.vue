@@ -1,6 +1,6 @@
 <template>
     <div style="display: flex;align-items: center;">
-        <img style="max-width: 200px;padding: 7px;" v-if="defUrl" :src="defUrl" alt="无法显示">
+        <img style="max-width: 200px;padding: 7px;" v-if="defUrl && !imageUrl" :src="defUrl" alt="无法显示">
         <a-upload
             :name="name"
             list-type="picture-card"
